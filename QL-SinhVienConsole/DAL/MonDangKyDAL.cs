@@ -78,7 +78,9 @@ namespace QL_SinhVienConsole.DAL
             {
                 foreach(var m in mons)
                 {
-                    Console.WriteLine($"{m.MaMonHoc} {m.MaSinhVien} {m.DiemQuaTrinh} {m.DiemThanhPhan}");
+                    string diemQuaTrinh = m.DiemQuaTrinh > -1 ? m.DiemQuaTrinh.ToString() : "-";
+                    string diemThanhPhan = m.DiemThanhPhan > -1 ? m.DiemThanhPhan.ToString() : "-";
+                    Console.WriteLine($"{m.MaMonHoc} {m.MaSinhVien} {diemQuaTrinh} {diemThanhPhan}");
                 }
             }
             else
@@ -87,36 +89,45 @@ namespace QL_SinhVienConsole.DAL
                 return;
             }
 
+            Console.WriteLine("Nhập 0 để thoát khỏi thêm điểm");
             Console.Write("Nhập vào mã sinh viên cần nhập điểm: ");
             string masv = Console.ReadLine();
             MonDangKy mondk = mons.FirstOrDefault(x => x.MaSinhVien.Equals(masv));
             if(mondk != null)
             {
-                double diemQT, diemTP;
-                MonDangKy monDangKy1 = mondk;
-                Console.Write("Nhập vào điểm quá trình: ");
-                string input1 = Console.ReadLine();
-                while (HoTro.KiemTraDouble(input1) != true || HoTro.KiemTraTu0Den10(input1) != true)
-                {
-                    Console.WriteLine("Vui lòng nhập vào một số thực hoặc số từ 0-10");
-                    Console.Write("Nhập lại điểm quá trình: ");
-                    input1 = Console.ReadLine();
-                }
-
-                Console.Write("Nhập vào điểm thành phần: ");
-                string input2 = Console.ReadLine();
-                while (HoTro.KiemTraDouble(input2) != true || HoTro.KiemTraTu0Den10(input2) != true)
-                {
-                    Console.WriteLine("Vui lòng nhập vào một số thực hoặc số từ 0-10");
-                    Console.Write("Nhập lại điểm thành phần: ");
-                    input2 = Console.ReadLine();
-                }
-                diemQT = int.Parse(input1);
-                diemTP = int.Parse(input2);
-                monDangKy1.DiemQuaTrinh = diemQT;
-                monDangKy1.DiemThanhPhan = diemTP;
-                NhapDiemCuaMotSinhVien(monDangKy1);
+                MonDangKy mon = NhapDiemCuaMonHoc(mondk);
+                NhapDiemCuaMotSinhVien(mon);
             }
+            else
+            {
+                Console.WriteLine("Không tìm được sinh viên trong môn học!");
+            }
+        }
+        public MonDangKy NhapDiemCuaMonHoc(MonDangKy monDangKy)
+        {
+            double diemQT, diemTP;
+            Console.Write("Nhập vào điểm quá trình: ");
+            string input1 = Console.ReadLine();
+            while (HoTro.KiemTraDouble(input1) != true || HoTro.KiemTraTu0Den10(input1) != true)
+            {
+                Console.WriteLine("Vui lòng nhập vào một số thực hoặc số từ 0-10");
+                Console.Write("Nhập lại điểm quá trình: ");
+                input1 = Console.ReadLine();
+            }
+
+            Console.Write("Nhập vào điểm thành phần: ");
+            string input2 = Console.ReadLine();
+            while (HoTro.KiemTraDouble(input2) != true || HoTro.KiemTraTu0Den10(input2) != true)
+            {
+                Console.WriteLine("Vui lòng nhập vào một số thực hoặc số từ 0-10");
+                Console.Write("Nhập lại điểm thành phần: ");
+                input2 = Console.ReadLine();
+            }
+            diemQT = int.Parse(input1);
+            diemTP = int.Parse(input2);
+            monDangKy.DiemQuaTrinh = diemQT;
+            monDangKy.DiemThanhPhan = diemTP;
+            return monDangKy;
         }
         public void NhapDiemCuaMotSinhVien(MonDangKy monDangKy)
         {

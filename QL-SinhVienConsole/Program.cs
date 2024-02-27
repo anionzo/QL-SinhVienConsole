@@ -14,16 +14,10 @@ namespace QL_SinhVienConsole
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-
-
-           
-
             Menu();
-         
         }
         public static void Menu()
         {
-
             int chucNang = -1;
             SinhVienDAL sv = new SinhVienDAL();
             MonHocDAL mh = new MonHocDAL();
