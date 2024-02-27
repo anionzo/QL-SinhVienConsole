@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace QL_SinhVienConsole.DAL
 {
@@ -15,8 +16,11 @@ namespace QL_SinhVienConsole.DAL
         List<MonDangKy> monDangKys = new List<MonDangKy>();
         string path;
         public MonDangKyDAL() {
-             path = "../../Data/DSMonDangKy.json";
-            ReadFileJsonMonDangKy(path);
+            //path = "../../Data/DSMonDangKy.json";
+            //ReadFileJsonMonDangKy(path);
+
+            path = "../../Data/DSMonDangKy.xml";
+            ReadFileXmlMonDangKy(path);
         }
         public void ReadFileJsonMonDangKy(string path) {
             try
@@ -29,7 +33,33 @@ namespace QL_SinhVienConsole.DAL
                 Console.WriteLine("Lỗi: " + ex.Message);
             }
         }
-
+        public void ReadFileXmlMonDangKy(string path)
+        {
+            try
+            {
+                List<MonDangKy> monDangKys = new List<MonDangKy>();
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(path);
+                XmlNodeList nodeList = xmlDocument.DocumentElement.SelectNodes("/MonDangKys/MonDangKy");
+                foreach(XmlNode node in nodeList)
+                {
+                    MonDangKy mondk = new MonDangKy
+                    {
+                        MaMonHoc = node.SelectSingleNode("MaMonHoc").InnerText,
+                        MaSinhVien = node.SelectSingleNode("MaSinhVien").InnerText,
+                        DiemQuaTrinh = Double.Parse(node.SelectSingleNode("DiemQuaTrinh").InnerText, System.Globalization.CultureInfo.InvariantCulture),
+                        DiemThanhPhan = Double.Parse(node.SelectSingleNode("DiemThanhPhan").InnerText, System.Globalization.CultureInfo.InvariantCulture)
+                        
+                    };
+                    monDangKys.Add(mondk);
+                }
+                this.monDangKys = monDangKys;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+            }
+        }
         public void XuatSoMonHocSinhVienDangKy()
         {
             Console.Write("Nhập mssv cần kiêm tra số môn đăng ký: ");
@@ -69,6 +99,7 @@ namespace QL_SinhVienConsole.DAL
                 }
             }
         }
+        //--- 5.
         public void NhapDiemMonHoc()
         {
             Console.Write("Nhập mã số môn học nhập điểm: ");
@@ -76,11 +107,17 @@ namespace QL_SinhVienConsole.DAL
             List<MonDangKy> mons = this.monDangKys.Where(x => x.MaMonHoc.Equals(mamh,StringComparison.OrdinalIgnoreCase)).ToList();
             if(mons.Count > 0)
             {
-                foreach(var m in mons)
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (10 / 2)) + "}", "Điểm của Môn Học"));
+                Console.WriteLine("Mã môn học".PadRight(15) + "Mã sinh viên".PadRight(22) + "Điểm quá trình".PadRight(20) + "Điểm thành phần".PadRight(20));
+
+                Console.WriteLine(new string('-', Console.WindowWidth)); Console.WriteLine();
+
+
+                foreach (var m in mons)
                 {
                     string diemQuaTrinh = m.DiemQuaTrinh > -1 ? m.DiemQuaTrinh.ToString() : "-";
                     string diemThanhPhan = m.DiemThanhPhan > -1 ? m.DiemThanhPhan.ToString() : "-";
-                    Console.WriteLine($"{m.MaMonHoc} {m.MaSinhVien} {diemQuaTrinh} {diemThanhPhan}");
+                    Console.WriteLine($"{m.MaMonHoc, -15} {m.MaSinhVien,-22} {diemQuaTrinh,-20} {diemThanhPhan,-20}");
                 }
             }
             else
@@ -96,7 +133,8 @@ namespace QL_SinhVienConsole.DAL
             if(mondk != null)
             {
                 MonDangKy mon = NhapDiemCuaMonHoc(mondk);
-                NhapDiemCuaMotSinhVien(mon);
+                //NhapDiemCuaMotSinhVien(mon);
+                NhapDiemCuaMotSinhVienXML(mon);
             }
             else
             {
@@ -123,8 +161,8 @@ namespace QL_SinhVienConsole.DAL
                 Console.Write("Nhập lại điểm thành phần: ");
                 input2 = Console.ReadLine();
             }
-            diemQT = int.Parse(input1);
-            diemTP = int.Parse(input2);
+            diemQT = double.Parse(input1);
+            diemTP = double.Parse(input2);
             monDangKy.DiemQuaTrinh = diemQT;
             monDangKy.DiemThanhPhan = diemTP;
             return monDangKy;
@@ -143,6 +181,69 @@ namespace QL_SinhVienConsole.DAL
             }
             string jsonUpdated = JsonConvert.SerializeObject(monDK);
             File.WriteAllText(path, jsonUpdated);
+        }
+        public void NhapDiemCuaMotSinhVienXML(MonDangKy monDangKy)
+        {
+            try
+            {
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(path);
+                XmlNodeList nodeList = xmlDocument.DocumentElement.SelectNodes("/MonDangKys/MonDangKy");
+                foreach (XmlNode node in nodeList)
+                {
+                    MonDangKy mondk = new MonDangKy
+                    {
+                        MaMonHoc = node.SelectSingleNode("MaMonHoc").InnerText,
+                        MaSinhVien = node.SelectSingleNode("MaSinhVien").InnerText,
+                        DiemQuaTrinh = Double.Parse(node.SelectSingleNode("DiemQuaTrinh").InnerText, System.Globalization.CultureInfo.InvariantCulture),
+                        DiemThanhPhan = Double.Parse(node.SelectSingleNode("DiemThanhPhan").InnerText, System.Globalization.CultureInfo.InvariantCulture)
+                    };
+
+                    if(mondk.MaMonHoc.Equals(monDangKy.MaMonHoc) == true && mondk.MaSinhVien.Equals(monDangKy.MaSinhVien) == true)
+                    {
+                        node.SelectSingleNode("DiemQuaTrinh").InnerText = monDangKy.DiemQuaTrinh.ToString();
+                        node.SelectSingleNode("DiemThanhPhan").InnerText = monDangKy.DiemThanhPhan.ToString();
+                        break;
+                    }
+                }
+                xmlDocument.Save(path);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+            }
+        }
+        // 6.
+        public void XuatDauRotCuaMonHoc()
+        {
+            Console.Write("Nhập mã số môn học nhập điểm: ");
+            string mamh = Console.ReadLine();
+            List<MonDangKy> somon = this.monDangKys.Where(x => x.MaMonHoc.Equals(mamh, StringComparison.OrdinalIgnoreCase)).ToList();
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (10 / 2)) + "}", "Đậu rớt của Sinh Viên"));
+            Console.WriteLine("Mã môn học".PadRight(12) + "Tên môn học".PadRight(20) + "Tên sinh viên".PadRight(15) + "Điểm quá trình".PadRight(20) + "Điểm thành phần".PadRight(10) + "Điểm tổng".PadRight(20) + "Qua Môn");
+            Console.WriteLine(new string('-', Console.WindowWidth)); Console.WriteLine();
+            foreach (var mon in somon)
+            {
+                MonHocDAL monHocdal = new MonHocDAL();
+                SinhVienDAL sinhVienDAL = new SinhVienDAL();
+                //double tiLe = monHocdal.GetTiLeDiem(mon.MaMonHoc);
+                double tiLe = monHocdal.GetMonHoc(mon.MaMonHoc).TiLeDiem;
+                string tenMon = monHocdal.GetMonHoc(mon.MaMonHoc).TenMonHoc;
+                string tensv = sinhVienDAL.GetSinhVien(mon.MaSinhVien).TenSinhVien;
+                double diemtong = (mon.DiemQuaTrinh * tiLe) + (mon.DiemThanhPhan * (1.0 - tiLe));
+                string diemtongket = diemtong > -1 ? diemtong.ToString() : "-";
+                string diemQuaTrinh = mon.DiemQuaTrinh > -1 ? mon.DiemQuaTrinh.ToString() : "-";
+                string diemThanhPhan = mon.DiemThanhPhan > -1 ? mon.DiemThanhPhan.ToString() : "-";
+                string daurot;
+                if (diemtongket == "-")
+                {
+                    daurot ="-";
+                }else if(diemtong >= 4) {
+                    daurot = "Đậu";
+
+                }else { daurot = "Rớt"; }
+                Console.WriteLine($"{mon.MaMonHoc,-12} {tenMon,-20}  {tensv,-15} {diemQuaTrinh,-20} {diemThanhPhan,-20} {diemtongket,-10} {daurot}");
+            }
         }
     }
 }

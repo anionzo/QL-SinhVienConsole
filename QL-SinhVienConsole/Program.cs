@@ -69,6 +69,8 @@ namespace QL_SinhVienConsole
                         break;
                     case 6:
                         // Thực hiện chức năng xem kết quả trượt đỗ của sinh viên
+                        mh.XuatDSMonHoc();
+                        mdk.XuatDauRotCuaMonHoc();
                         // XemKetQuaTruotDoCuaSinhVien();
                         break;
                     case 0:

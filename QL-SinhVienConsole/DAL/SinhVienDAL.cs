@@ -6,25 +6,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-
+using System.Xml;
 
 namespace QL_SinhVienConsole.DAL
 {
     public class SinhVienDAL
     {
         List<SinhVien> sinhViens = new List<SinhVien>();
-
+        string path;
 
         public SinhVienDAL() {
-            string path = "../../Data/DSSinhVien.json";
-            ReadFileJsonSinhVien(path);
+            // path = "../../Data/DSSinhVien.json";
+            //ReadFileJsonSinhVien(path);
+
+            path = "../../Data/DSSinhVien.xml";
+            ReadFileXMLSinhVien(path);
+
 
         }
         public void ReadFileJsonSinhVien(string filePath)
         {
             try
             {
-
                 string json = File.ReadAllText(filePath);
                 List<SinhVien> sinhViens = JsonConvert.DeserializeObject<List<SinhVien>>(json);
 
@@ -38,6 +41,34 @@ namespace QL_SinhVienConsole.DAL
 
         }
 
+        public void ReadFileXMLSinhVien(string filePath)
+        {
+            List<SinhVien> sinhs = new List<SinhVien>();
+
+            try
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(filePath);
+                XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/SinhViens/SinhVien");
+                foreach (XmlNode node in nodeList)
+                {
+                    SinhVien sinhvien = new SinhVien();
+                    sinhvien.MaSinhVien= node.SelectSingleNode("MaSinhVien").InnerText;
+                    sinhvien.TenSinhVien = node.SelectSingleNode("TenSinhVien").InnerText;
+                    sinhvien.GioiTinh = node.SelectSingleNode("GioiTinh").InnerText;
+                    sinhvien.Ngaysinh = node.SelectSingleNode("Ngaysinh").InnerText;
+                    sinhvien.Lop = node.SelectSingleNode("Lop").InnerText;
+                    sinhvien.Khoa = node.SelectSingleNode("Khoa").InnerText;
+                     sinhs.Add(sinhvien);
+                }
+
+                this.sinhViens = sinhs;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi: {ex.Message}");
+            }
+        }
         public List<SinhVien> GetListSinhVien()
         {
             return this.sinhViens;
