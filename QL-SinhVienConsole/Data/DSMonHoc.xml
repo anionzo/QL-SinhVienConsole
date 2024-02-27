@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MonHocs>
+	<MonHoc>
+		<MaMonHoc>MH001</MaMonHoc>
+		<TenMonHoc>Lập trình C#</TenMonHoc>
+		<SoTietMonHoc>30</SoTietMonHoc>
+		<TiLeDiem>0.3</TiLeDiem>
+	</MonHoc>
+	<MonHoc>
+		<MaMonHoc>MH002</MaMonHoc>
+		<TenMonHoc>Cơ sở dữ liệu</TenMonHoc>
+		<SoTietMonHoc>40</SoTietMonHoc>
+		<TiLeDiem>0.4</TiLeDiem>
+	</MonHoc>
+	<MonHoc>
+		<MaMonHoc>MH003</MaMonHoc>
+		<TenMonHoc>Toán cao cấp</TenMonHoc>
+		<SoTietMonHoc>35</SoTietMonHoc>
+		<TiLeDiem>0.35</TiLeDiem>
+	</MonHoc>
+	<MonHoc>
+		<MaMonHoc>MH004</MaMonHoc>
+		<TenMonHoc>Kỹ thuật phần mềm</TenMonHoc>
+		<SoTietMonHoc>45</SoTietMonHoc>
+		<TiLeDiem>0.45</TiLeDiem>
+	</MonHoc>
+	<MonHoc>
+		<MaMonHoc>MH005</MaMonHoc>
+		<TenMonHoc>Mạng máy tính</TenMonHoc>
+		<SoTietMonHoc>40</SoTietMonHoc>
+		<TiLeDiem>0.4</TiLeDiem>
+	</MonHoc>
+</MonHocs>

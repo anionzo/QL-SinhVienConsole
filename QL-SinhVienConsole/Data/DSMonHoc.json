@@ -1,0 +1,32 @@
+[
+  {
+    "MaMonHoc": "MH001",
+    "TenMonHoc": "Lập trình C#",
+    "SoTietMonHoc": 30,
+    "TiLeDiem": 0.3
+  },
+  {
+    "MaMonHoc": "MH002",
+    "TenMonHoc": "Cơ sở dữ liệu",
+    "SoTietMonHoc": 40,
+    "TiLeDiem": 0.4
+  },
+  {
+    "MaMonHoc": "MH003",
+    "TenMonHoc": "Toán cao cấp",
+    "SoTietMonHoc": 35,
+    "TiLeDiem": 0.35
+  },
+  {
+    "MaMonHoc": "MH004",
+    "TenMonHoc": "Kỹ thuật phần mềm",
+    "SoTietMonHoc": 45,
+    "TiLeDiem": 0.45
+  },
+  {
+    "MaMonHoc": "MH005",
+    "TenMonHoc": "Mạng máy tính",
+    "SoTietMonHoc": 40,
+    "TiLeDiem": 0.4
+  }
+]

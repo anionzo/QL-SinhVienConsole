@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SinhViens>
+	<SinhVien>
+		<MaSinhVien>2001203060</MaSinhVien>
+		<TenSinhVien>Mai Trung Tiến</TenSinhVien>
+		<GioiTinh>Nam</GioiTinh>
+		<Ngaysinh>19/07/2002</Ngaysinh>
+		<Lop>11DHTH4</Lop>
+		<Khoa>2020</Khoa>
+	</SinhVien>
+	<SinhVien>
+		<MaSinhVien>2001201234</MaSinhVien>
+		<TenSinhVien>Luần Văn Hóa</TenSinhVien>
+		<GioiTinh>Nam</GioiTinh>
+		<Ngaysinh>19/07/2001</Ngaysinh>
+		<Lop>11DHTH5</Lop>
+		<Khoa>2020</Khoa>
+	</SinhVien>
+	<SinhVien>
+		<MaSinhVien>2001256760</MaSinhVien>
+		<TenSinhVien>Bai Trung Hiếu</TenSinhVien>
+		<GioiTinh>Nam</GioiTinh>
+		<Ngaysinh>19/08/2000</Ngaysinh>
+		<Lop>11DHTH1</Lop>
+		<Khoa>2020</Khoa>
+	</SinhVien>
+	<SinhVien>
+		<MaSinhVien>2001098660</MaSinhVien>
+		<TenSinhVien>Thiên Vũ Bảo</TenSinhVien>
+		<GioiTinh>Nam</GioiTinh>
+		<Ngaysinh>23/09/2002</Ngaysinh>
+		<Lop>11DHTH9</Lop>
+		<Khoa>2020</Khoa>
+	</SinhVien>
+	<SinhVien>
+		<MaSinhVien>2001201243</MaSinhVien>
+		<TenSinhVien>Lý Ngọc Hoa</TenSinhVien>
+		<GioiTinh>Nữ</GioiTinh>
+		<Ngaysinh>10/10/2002</Ngaysinh>
+		<Lop>11DHTH7</Lop>
+		<Khoa>2020</Khoa>
+	</SinhVien>
+	<SinhVien>
+		<MaSinhVien>2001201843</MaSinhVien>
+		<TenSinhVien>Ngọc Hoa Lan</TenSinhVien>
+		<GioiTinh>Nữ</GioiTinh>
+		<Ngaysinh>10/11/2002</Ngaysinh>
+		<Lop>11DHTH7</Lop>
+		<Khoa>2020</Khoa>
+	</SinhVien>
+	<SinhVien>
+		<MaSinhVien>2001200243</MaSinhVien>
+		<TenSinhVien>Bạch Vũ Nương</TenSinhVien>
+		<GioiTinh>Nữ</GioiTinh>
+		<Ngaysinh>14/10/2002</Ngaysinh>
+		<Lop>11DHTH2</Lop>
+		<Khoa>2020</Khoa>
+	</SinhVien>
+</SinhViens>

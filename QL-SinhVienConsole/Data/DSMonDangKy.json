@@ -1,0 +1,128 @@
+[
+  {
+    "MaSinhVien": "2001203060",
+    "MaMonHoc": "MH001",
+    "DiemQuaTrinh": 7.5,
+    "DiemThanhPhan": 8.0
+  },
+  {
+    "MaSinhVien": "2001203060",
+    "MaMonHoc": "MH002",
+    "DiemQuaTrinh": 6.0,
+    "DiemThanhPhan": 7.0
+  },
+  {
+    "MaSinhVien": "2001201234",
+    "MaMonHoc": "MH001",
+    "DiemQuaTrinh": 8.0,
+    "DiemThanhPhan": 8.5
+  },
+  {
+    "MaSinhVien": "2001201234",
+    "MaMonHoc": "MH002",
+    "DiemQuaTrinh": 7.0,
+    "DiemThanhPhan": 6.5
+  },
+  {
+    "MaSinhVien": "2001256760",
+    "MaMonHoc": "MH003",
+    "DiemQuaTrinh": 9.0,
+    "DiemThanhPhan": 8.0
+  },
+  {
+    "MaSinhVien": "2001256760",
+    "MaMonHoc": "MH004",
+    "DiemQuaTrinh": 7.5,
+    "DiemThanhPhan": 8.5
+  },
+  {
+    "MaSinhVien": "2001098660",
+    "MaMonHoc": "MH003",
+    "DiemQuaTrinh": 8.5,
+    "DiemThanhPhan": 9.0
+  },
+  {
+    "MaSinhVien": "2001098660",
+    "MaMonHoc": "MH004",
+    "DiemQuaTrinh": 9.0,
+    "DiemThanhPhan": 8.0
+  },
+  {
+    "MaSinhVien": "2001201243",
+    "MaMonHoc": "MH005",
+    "DiemQuaTrinh": 8.0,
+    "DiemThanhPhan": 7.5
+  },
+  {
+    "MaSinhVien": "2001201243",
+    "MaMonHoc": "MH001",
+    "DiemQuaTrinh": 7.0,
+    "DiemThanhPhan": 6.5
+  },
+  {
+    "MaSinhVien": "2001201843",
+    "MaMonHoc": "MH005",
+    "DiemQuaTrinh": 6.5,
+    "DiemThanhPhan": 7.0
+  },
+  {
+    "MaSinhVien": "2001201843",
+    "MaMonHoc": "MH001",
+    "DiemQuaTrinh": 9.0,
+    "DiemThanhPhan": 8.5
+  },
+  {
+    "MaSinhVien": "2001200243",
+    "MaMonHoc": "MH002",
+    "DiemQuaTrinh": 8.5,
+    "DiemThanhPhan": 9.0
+  },
+  {
+    "MaSinhVien": "2001200243",
+    "MaMonHoc": "MH003",
+    "DiemQuaTrinh": 7.5,
+    "DiemThanhPhan": 8.0
+  },
+  {
+    "MaSinhVien": "2001203060",
+    "MaMonHoc": "MH005",
+    "DiemQuaTrinh": 9.0,
+    "DiemThanhPhan": 9.0
+  },
+  {
+    "MaSinhVien": "2001203060",
+    "MaMonHoc": "MH003",
+    "DiemQuaTrinh": 8.5,
+    "DiemThanhPhan": 8.5
+  },
+  {
+    "MaSinhVien": "2001201234",
+    "MaMonHoc": "MH005",
+    "DiemQuaTrinh": 7.0,
+    "DiemThanhPhan": 7.0
+  },
+  {
+    "MaSinhVien": "2001201234",
+    "MaMonHoc": "MH003",
+    "DiemQuaTrinh": 6.5,
+    "DiemThanhPhan": 6.5
+  },
+  {
+    "MaSinhVien": "2001256760",
+    "MaMonHoc": "MH005",
+    "DiemQuaTrinh": 8.0,
+    "DiemThanhPhan": 8.0
+  },
+  {
+    "MaSinhVien": "2001256760",
+    "MaMonHoc": "MH003",
+    "DiemQuaTrinh": 9.0,
+    "DiemThanhPhan": 9.0
+  },
+  {
+    "MaSinhVien": "2001256760",
+    "MaMonHoc": "MH001",
+    "DiemQuaTrinh": -1,
+    "DiemThanhPhan": -1
+  }
+]

@@ -1,0 +1,58 @@
+[
+    {
+      "MaSinhVien": "2001203060",
+      "TenSinhVien": "Mai Trung Tiến",
+      "GioiTinh": "Nam",
+      "Ngaysinh": "19/07/2002",
+      "Lop": "11DHTH4",
+      "Khoa": "2020"
+    },
+    {
+      "MaSinhVien": "2001201234",
+      "TenSinhVien": "Luần Văn Hóa",
+      "GioiTinh": "Nam",
+      "Ngaysinh": "19/07/2001",
+      "Lop": "11DHTH5",
+      "Khoa": "2020"
+    },
+    {
+      "MaSinhVien": "2001256760",
+      "TenSinhVien": "Bai Trung Hiếu",
+      "GioiTinh": "Nam",
+      "Ngaysinh": "19/08/2000",
+      "Lop": "11DHTH1",
+      "Khoa": "2020"
+    },
+    {
+      "MaSinhVien": "2001098660",
+      "TenSinhVien": "Thiên Vũ Bảo",
+      "GioiTinh": "Nam",
+      "Ngaysinh": "23/09/2002",
+      "Lop": "11DHTH9",
+      "Khoa": "2020"
+    },
+    {
+      "MaSinhVien": "2001201243",
+      "TenSinhVien": "Lý Ngọc Hoa",
+      "GioiTinh": "Nữ",
+      "Ngaysinh": "10/10/2002",
+      "Lop": "11DHTH7",
+      "Khoa": "2020"
+    },
+    {
+      "MaSinhVien": "2001201843",
+      "TenSinhVien": "Ngọc Hoa Lan",
+      "GioiTinh": "Nữ",
+      "Ngaysinh": "10/11/2002",
+      "Lop": "11DHTH7",
+      "Khoa": "2020"
+    },
+    {
+      "MaSinhVien": "2001200243",
+      "TenSinhVien": "Bạch Vũ Nương",
+      "GioiTinh": "Nữ",
+      "Ngaysinh": "14/10/2002",
+      "Lop": "11DHTH2",
+      "Khoa": "2020"
+    }
+ ]
