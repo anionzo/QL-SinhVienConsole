@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using QL_SinhVienConsole.DTO;
+using QL_SinhVienConsole.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,8 +13,9 @@ namespace QL_SinhVienConsole.DAL
     public class MonDangKyDAL
     {
         List<MonDangKy> monDangKys = new List<MonDangKy>();
+        string path;
         public MonDangKyDAL() {
-            string path = "../../Data/DSMonDangKy.json";
+             path = "../../Data/DSMonDangKy.json";
             ReadFileJsonMonDangKy(path);
         }
         public void ReadFileJsonMonDangKy(string path) {
@@ -74,10 +76,8 @@ namespace QL_SinhVienConsole.DAL
             List<MonDangKy> mons = this.monDangKys.Where(x => x.MaMonHoc.Equals(mamh,StringComparison.OrdinalIgnoreCase)).ToList();
             if(mons.Count > 0)
             {
-
                 foreach(var m in mons)
                 {
-
                     Console.WriteLine($"{m.MaMonHoc} {m.MaSinhVien} {m.DiemQuaTrinh} {m.DiemThanhPhan}");
                 }
             }
@@ -92,8 +92,46 @@ namespace QL_SinhVienConsole.DAL
             MonDangKy mondk = mons.FirstOrDefault(x => x.MaSinhVien.Equals(masv));
             if(mondk != null)
             {
-                
+                double diemQT, diemTP;
+                MonDangKy monDangKy1 = mondk;
+                Console.Write("Nhập vào điểm quá trình: ");
+                string input1 = Console.ReadLine();
+                while (HoTro.KiemTraDouble(input1) != true || HoTro.KiemTraTu0Den10(input1) != true)
+                {
+                    Console.WriteLine("Vui lòng nhập vào một số thực hoặc số từ 0-10");
+                    Console.Write("Nhập lại điểm quá trình: ");
+                    input1 = Console.ReadLine();
+                }
+
+                Console.Write("Nhập vào điểm thành phần: ");
+                string input2 = Console.ReadLine();
+                while (HoTro.KiemTraDouble(input2) != true || HoTro.KiemTraTu0Den10(input2) != true)
+                {
+                    Console.WriteLine("Vui lòng nhập vào một số thực hoặc số từ 0-10");
+                    Console.Write("Nhập lại điểm thành phần: ");
+                    input2 = Console.ReadLine();
+                }
+                diemQT = int.Parse(input1);
+                diemTP = int.Parse(input2);
+                monDangKy1.DiemQuaTrinh = diemQT;
+                monDangKy1.DiemThanhPhan = diemTP;
+                NhapDiemCuaMotSinhVien(monDangKy1);
             }
+        }
+        public void NhapDiemCuaMotSinhVien(MonDangKy monDangKy)
+        {
+            List<MonDangKy> monDK = monDangKys;
+            foreach(var m in monDK)
+            {
+                if(m.MaMonHoc.Equals(monDangKy.MaMonHoc) && (m.MaSinhVien.Equals(monDangKy.MaSinhVien)))
+                {
+                    m.DiemQuaTrinh = monDangKy.DiemQuaTrinh;
+                    m.DiemThanhPhan = monDangKy.DiemThanhPhan;
+                    break;
+                }
+            }
+            string jsonUpdated = JsonConvert.SerializeObject(monDK);
+            File.WriteAllText(path, jsonUpdated);
         }
     }
 }

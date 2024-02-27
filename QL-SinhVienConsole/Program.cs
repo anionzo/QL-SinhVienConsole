@@ -1,4 +1,6 @@
 ﻿using QL_SinhVienConsole.DAL;
+using QL_SinhVienConsole.DTO;
+using QL_SinhVienConsole.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,10 @@ namespace QL_SinhVienConsole
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
+
+
+           
+
             Menu();
          
         }
