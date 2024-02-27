@@ -181,6 +181,8 @@ namespace QL_SinhVienConsole.DAL
             }
             string jsonUpdated = JsonConvert.SerializeObject(monDK);
             File.WriteAllText(path, jsonUpdated);
+            Console.WriteLine("Nhập điểm thành công!");
+
         }
         public void NhapDiemCuaMotSinhVienXML(MonDangKy monDangKy)
         {
@@ -207,6 +209,7 @@ namespace QL_SinhVienConsole.DAL
                     }
                 }
                 xmlDocument.Save(path);
+                Console.WriteLine("Nhập điểm thành công!");
             }
             catch (Exception ex)
             {
