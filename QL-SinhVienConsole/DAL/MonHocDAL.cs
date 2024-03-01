@@ -12,7 +12,7 @@ namespace QL_SinhVienConsole.DAL
 {
     public class MonHocDAL
     {
-        List<MonHoc> monHocs = new List<MonHoc>();
+        List<MonHoc> _dsMonHoc = new List<MonHoc>();
         string path;
         public MonHocDAL() { 
              //path = "../../Data/DSMonHoc.json";
@@ -28,7 +28,7 @@ namespace QL_SinhVienConsole.DAL
             {
                 string json = File.ReadAllText(path) ;
                 List<MonHoc> monHocs = JsonConvert.DeserializeObject<List<MonHoc>>(json);
-                this.monHocs = monHocs ;
+                this._dsMonHoc = monHocs ;
 
             }catch(Exception ex) {
             
@@ -55,7 +55,7 @@ namespace QL_SinhVienConsole.DAL
                     };
                     monHocs.Add(monHoc);
                 }
-                this.monHocs = monHocs ;
+                this._dsMonHoc = monHocs ;
             }
             catch (Exception ex)
             {
@@ -63,14 +63,14 @@ namespace QL_SinhVienConsole.DAL
                 Console.WriteLine("Lỗi:" + ex.Message);
             }
         }
-        public double GetTiLeDiem(string mamonhoc)
+        public double GetTiLeDiem(string maMonHoc)
         {
-            double tile = this.monHocs.FirstOrDefault(x => x.MaMonHoc.Equals(mamonhoc)).TiLeDiem;
-            return tile;
+            double tiLeDiem = this._dsMonHoc.FirstOrDefault(x => x.MaMonHoc.Equals(maMonHoc)).TiLeDiem;
+            return tiLeDiem;
         }
-        public MonHoc GetMonHoc(string mamonhoc)
+        public MonHoc GetMonHoc(string maMonHoc)
         {
-            MonHoc mon  = this.monHocs.FirstOrDefault(x => x.MaMonHoc.Equals(mamonhoc));
+            MonHoc mon  = this._dsMonHoc.FirstOrDefault(x => x.MaMonHoc.Equals(maMonHoc));
             return mon;
         }
         public void XuatDSMonHoc() {
@@ -78,7 +78,7 @@ namespace QL_SinhVienConsole.DAL
             Console.WriteLine("Mã môn".PadRight(20) + "Tên môn".PadRight(25) + "Số tiết".PadRight(15));
             Console.WriteLine(new string('-', Console.WindowWidth));
             Console.WriteLine();
-            foreach (var  monHoc in this.monHocs)
+            foreach (var  monHoc in this._dsMonHoc)
             {
                 Console.WriteLine($"{monHoc.MaMonHoc,-20} {monHoc.TenMonHoc,-25} {monHoc.SoTietMonHoc,-25}");
             }

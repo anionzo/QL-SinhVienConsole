@@ -12,7 +12,7 @@ namespace QL_SinhVienConsole.DAL
 {
     public class SinhVienDAL
     {
-        List<SinhVien> sinhViens = new List<SinhVien>();
+        List<SinhVien> _dsSinhVien = new List<SinhVien>();
         string path;
 
         public SinhVienDAL() {
@@ -31,7 +31,7 @@ namespace QL_SinhVienConsole.DAL
                 string json = File.ReadAllText(filePath);
                 List<SinhVien> sinhViens = JsonConvert.DeserializeObject<List<SinhVien>>(json);
 
-                this.sinhViens = sinhViens;
+                this._dsSinhVien = sinhViens;
 
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace QL_SinhVienConsole.DAL
 
         public void ReadFileXMLSinhVien(string filePath)
         {
-            List<SinhVien> sinhs = new List<SinhVien>();
+            List<SinhVien> dsSinhVien = new List<SinhVien>();
 
             try
             {
@@ -52,17 +52,17 @@ namespace QL_SinhVienConsole.DAL
                 XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/SinhViens/SinhVien");
                 foreach (XmlNode node in nodeList)
                 {
-                    SinhVien sinhvien = new SinhVien();
-                    sinhvien.MaSinhVien= node.SelectSingleNode("MaSinhVien").InnerText;
-                    sinhvien.TenSinhVien = node.SelectSingleNode("TenSinhVien").InnerText;
-                    sinhvien.GioiTinh = node.SelectSingleNode("GioiTinh").InnerText;
-                    sinhvien.Ngaysinh = node.SelectSingleNode("Ngaysinh").InnerText;
-                    sinhvien.Lop = node.SelectSingleNode("Lop").InnerText;
-                    sinhvien.Khoa = node.SelectSingleNode("Khoa").InnerText;
-                     sinhs.Add(sinhvien);
+                    SinhVien sinhVien = new SinhVien();
+                    sinhVien.MaSinhVien= node.SelectSingleNode("MaSinhVien").InnerText;
+                    sinhVien.TenSinhVien = node.SelectSingleNode("TenSinhVien").InnerText;
+                    sinhVien.GioiTinh = node.SelectSingleNode("GioiTinh").InnerText;
+                    sinhVien.Ngaysinh = node.SelectSingleNode("Ngaysinh").InnerText;
+                    sinhVien.Lop = node.SelectSingleNode("Lop").InnerText;
+                    sinhVien.Khoa = node.SelectSingleNode("Khoa").InnerText;
+                     dsSinhVien.Add(sinhVien);
                 }
 
-                this.sinhViens = sinhs;
+                this._dsSinhVien = dsSinhVien;
             }
             catch (Exception ex)
             {
@@ -71,11 +71,11 @@ namespace QL_SinhVienConsole.DAL
         }
         public List<SinhVien> GetListSinhVien()
         {
-            return this.sinhViens;
+            return this._dsSinhVien;
         }
         public SinhVien GetSinhVien(string masv)
         {
-            SinhVien sinhVien = this.sinhViens.SingleOrDefault(x=> x.MaSinhVien == masv);   
+            SinhVien sinhVien = this._dsSinhVien.SingleOrDefault(x=> x.MaSinhVien == masv);   
             return sinhVien;
         }
 
